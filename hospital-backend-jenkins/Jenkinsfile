@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo '📦 Checking out source code...'
                 git branch: 'main', url: 'https://github.com/Madireddysaikrishna/hospital-managment-system.git'
+                bat 'git submodule update --init --recursive'
             }
         }
 
