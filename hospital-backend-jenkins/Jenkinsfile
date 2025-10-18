@@ -16,10 +16,20 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build Backend') {
             steps {
                 echo '🔨 Building Spring Boot project...'
                 bat 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Build Frontend') {
+            steps {
+                echo '🔨 Building React frontend...'
+                dir('hospital-frontend') {
+                    bat 'npm install'
+                    bat 'npm run build'
+                }
             }
         }
 
